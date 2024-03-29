@@ -558,8 +558,10 @@ def analyse_website(request):
         'Access-Control-Allow-Origin': '*'
     }
     
+    #   api_key ----> OpenAI API key
     current_dir = os.path.dirname(os.path.abspath(__file__))
     service_account_file = os.path.join(current_dir, 'hear2act-b7aab2b14187.json')
+    #   folder_id ----> Google Drive folder ID
 
     checker = WebsiteComplianceChecker(api_key=api_key, service_account_file=service_account_file, folder_id=folder_id)
 
