@@ -1,0 +1,392 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compliance Report with Graphs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #2c3e50;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .chart-container {
+            width: 30%;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .suggestions {
+            background-color: #e7f5ff;
+            border-left: 6px solid #2c3e50;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #333;
+        }
+
+        .good,
+        .bad,
+        .unknown {
+            border: 2px solid #ddd;
+            /* Add border to all status elements */
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 4px;
+        }
+
+        .good {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+
+        .unknown {
+            background-color: #fcf8e3;
+            color: #8a6d3b;
+        }
+
+        .bad {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+
+        footer {
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+            padding: 20px 10px;
+            border-top: 1px solid #ddd;
+        }
+
+        footer a {
+            color: #337ab7;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container flex flex-col font-sans max-w-4xl">
+        <h1 class="text-3xl text-center font-bold">DSGVO Analyse Bericht</h1>
+        <div class="flex flex-row justify-between py-[2em]">
+            <div>
+                <h3 class="url">......................</h3>
+                <span class="font-light text-xs analyse-date">Analyse-Datum: .................. Uhr</span>
+            </div>
+            <div class="text-3xl font-bold pr-[1em] text-green-400">DSGVO.AI</div>
+        </div>
+        <!-- Sections for Compliance Data -->
+        <div class="flex flex-wrap justify-around">
+            <div class="chart-container">
+                <h2 class="text-center">Informationspflichten</h2>
+                <canvas id="Informationspflichten"></canvas>
+            </div>
+            <div class="chart-container">
+                <h2 class="text-center">Datenschutz</h2>
+                <canvas id="Datenschutz"></canvas>
+            </div>
+            <div class="chart-container">
+                <h2 class="text-center">IT-Sicherheit</h2>
+                <canvas id="IT-Sicherheit"></canvas>
+            </div>
+        </div>
+        <div class="analysis flex flex-col gap-1">
+            <h1 class="text-xl text-center font-medium">Analyse-Übersicht</h1>
+            <h2 class="font-medium text-xl py-[3px]">Informationspflichten</h2>
+            <div class="flex flex-col gap-1 border-2 rounded-md p-[0.5em]">
+                <div class="impressum"></div>
+                <div class="agb"></div>
+                <div class="widerrufsbelehrung"></div>
+            </div>
+            <h2 class="font-medium text-xl py-[3px]">Datenschutz</h2>
+            <div class="flex flex-col gap-1 border-2 rounded-md p-[0.5em]">
+                <div class="cookies"></div>
+                <div class="drittanbieter"></div>
+                <div class="datenschutzerklaerung"></div>
+            </div>
+            <h2 class="font-medium text-xl py-[3px]">IT-Sicherheit</h2>
+            <div class="flex flex-col gap-1 border-2 rounded-md p-[0.5em]">
+                <div class="verschluesselung"></div>
+                <div class="domain"></div>
+            </div>
+        </div>
+
+
+        <div class="suggestions">
+            <h2 class="text-xl font-bold">Vorschläge</h2>
+            <div class="border-b-2 border-black"></div>
+            <div></div>
+        </div>
+
+        <footer class="text-center bg-gray-100 text-gray-600 py-4 px-6 mt-8">
+            <p>&copy; 2024 DSGVO.AI. Alle Rechte vorbehalten.</p>
+            <p>Die Informationen auf dieser Website dienen der allgemeinen Information und stellen keine Rechtsberatung
+                dar.</p>
+            <p>Für weitere Informationen oder bei Fragen wenden Sie sich bitte an uns: <a href="mailto:info@dsgvo.ai"
+                    class="text-blue-500">info@dsgvo.ai</a></p>
+            <p>Diese Website nutzt Cookies, um Ihr Erlebnis zu verbessern. Mit der weiteren Nutzung dieser Website
+                stimmen Sie
+                der Verwendung von Cookies zu.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const ctx = document.getElementById('Informationspflichten').getContext('2d');
+        const impressumChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Good', 'Unknown', 'Bad'],
+                datasets: [{
+                    label: 'Compliance Status',
+                    data: [3, 5, 2], // Example data, replace with your actual data
+                    backgroundColor: [
+                        'rgba(40, 167, 69, 0.2)',
+                        'rgba(255, 193, 7, 0.2)',
+                        'rgba(220, 53, 69, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(40, 167, 69, 1)',
+                        'rgba(255, 193, 7, 1)',
+                        'rgba(220, 53, 69, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'bottom',
+                },
+            }
+        });
+
+        const ctx2 = document.getElementById('Datenschutz').getContext('2d');
+        const datenschutzChart = new Chart(ctx2, {
+            type: 'pie',
+            data: {
+                labels: ['Good', 'Unknown', 'Bad'],
+                datasets: [{
+                    label: 'Compliance Status',
+                    data: [4, 4, 2], // Example data, replace with your actual data
+                    backgroundColor: [
+                        'rgba(40, 167, 69, 0.2)',
+                        'rgba(255, 193, 7, 0.2)',
+                        'rgba(220, 53, 69, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(40, 167, 69, 1)',
+                        'rgba(255, 193, 7, 1)',
+                        'rgba(220, 53, 69, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'bottom',
+                },
+            }
+        });
+
+        const ctx3 = document.getElementById('IT-Sicherheit').getContext('2d');
+        const itSicherheitChart = new Chart(ctx3, {
+            type: 'pie',
+            data: {
+                labels: ['Good', 'Unknown', 'Bad'],
+                datasets: [{
+                    label: 'Compliance Status',
+                    data: [5, 3, 2], // Example data, replace with your actual data
+                    backgroundColor: [
+                        'rgba(40, 167, 69, 0.2)',
+                        'rgba(255, 193, 7, 0.2)',
+                        'rgba(220, 53, 69, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(40, 167, 69, 1)',
+                        'rgba(255, 193, 7, 1)',
+                        'rgba(220, 53, 69, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'bottom',
+                },
+            }
+        });
+
+
+
+        // Initialize Supabase client
+        const supabaseUrl = 'https://mxuxwnolnefnfzoxmynk.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im14dXh3bm9sbmVmbmZ6b3hteW5rIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTIxNzcyODQsImV4cCI6MjAyNzc1MzI4NH0.qA-BOOae0TWEsSDznlvSqcN7QHQpLaQ0WbRqG2NtBbU';
+        const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            const params = new URLSearchParams(window.location.search);
+            const resultId = params.get('id') || 1; // Here, providing a default value of 1 for testing purpose
+            if (resultId) {
+                try {
+                    let { data, error } = await supabase
+                        .from('Main')
+                        .select('analysis_data,url,created_at')
+                        .eq('id', resultId)
+                        .single();
+
+                    if (error) throw error;
+                    console.log('Fetched data:', data);
+                    console.log('Fetched data:', data.url);
+                    // Assuming there's an <h3> element for the URL and a <span> element for the date
+                    const urlElement = document.querySelector('.url'); // The selector should be more specific if needed
+                    const dateElement = document.querySelector('.analyse-date'); // The selector should be more specific if needed
+
+                    // Updating the URL and the date elements with the fetched data
+                    if (urlElement && data.url) {
+                        urlElement.textContent = data.url; // Setting the fetched URL
+                    }
+
+                    if (dateElement && data.created_at) {
+                        // You might want to format the date here if needed
+                        const formattedDate = new Date(data.created_at).toLocaleString('de-DE', {
+                            year: 'numeric', month: '2-digit', day: '2-digit',
+                            hour: '2-digit', minute: '2-digit', second: '2-digit'
+                        });
+                        dateElement.textContent = `Analyse-Datum: ${formattedDate}`; // Setting the formatted date
+                    }
+                    const complianceData = data.analysis_data;
+
+                    function calculateChartData(sectionData) {
+                        let good = 0, unknown = 0, bad = 0;
+                        Object.values(sectionData).forEach(subsection => {
+                            Object.values(subsection).forEach(value => {
+                                if (value === 1) good++;
+                                else if (value === 0) unknown++;
+                                else if (value === -1) bad++;
+                            });
+                        });
+                        return [good, unknown, bad];
+                    }
+
+                    // Update chart data
+                    const infosData = calculateChartData(complianceData["Informationspflichten"]);
+                    impressumChart.data.datasets[0].data = infosData;
+                    impressumChart.update();
+
+                    const datenschutzData = calculateChartData(complianceData["Datenschutz"]);
+                    datenschutzChart.data.datasets[0].data = datenschutzData;
+                    datenschutzChart.update();
+
+                    const itSicherheitData = calculateChartData(complianceData["IT-Sicherheit"]);
+                    itSicherheitChart.data.datasets[0].data = itSicherheitData;
+                    itSicherheitChart.update();
+
+
+                    function createAnalysisHTML(sectionName, sectionData) {
+                        let htmlContent = `<h2 class="text-xl font-semibold pb-[5px]">${sectionName}</h2><div class="flex flex-col gap-1">`;
+
+                        for (const [key, value] of Object.entries(sectionData)) {
+                            // Determine the icon and class based on the value
+                            let icon, badgeClass;
+                            switch (value) {
+                                case 1:
+                                    icon = '✅';
+                                    badgeClass = 'good'; // You might need to adjust these classes based on your CSS
+                                    break;
+                                case 0:
+                                    icon = '⚠️';
+                                    badgeClass = 'unknown';
+                                    break;
+                                case -1:
+                                    icon = '⛔';
+                                    badgeClass = 'bad';
+                                    break;
+                                default:
+                                    icon = '❓';
+                                    badgeClass = ''; // No specific class for undefined values
+                            }
+
+                            // Append HTML for each item
+                            htmlContent += `<div class="ml-[2em] border-2 rounded-md p-[2px] pb-[3px] ${badgeClass}">${icon} ${key}</div>`;
+                        }
+
+                        htmlContent += '</div>';
+                        return htmlContent;
+                    }
+
+                    // Generate HTML for Informationspflichten
+                    const informPflichtenHTML = createAnalysisHTML('Impressum', complianceData['Informationspflichten']['Impressum']);
+                    // Assuming there's a div with class="analysis" in your HTML
+                    document.querySelector('.impressum').innerHTML = informPflichtenHTML;
+                    document.querySelector('.agb').innerHTML = createAnalysisHTML('AGB', complianceData['Informationspflichten']['AGB']);
+                    document.querySelector('.widerrufsbelehrung').innerHTML = createAnalysisHTML('Widerrufsbelehrung', complianceData['Informationspflichten']['Widerrufsbelehrung']);
+                    document.querySelector('.cookies').innerHTML = createAnalysisHTML('Cookies', complianceData['Datenschutz']['Cookies']);
+                    document.querySelector('.drittanbieter').innerHTML = createAnalysisHTML('Drittanbieter-Einbindungen', complianceData['Datenschutz']['Drittanbieter-Einbindungen']);
+                    document.querySelector('.datenschutzerklaerung').innerHTML = createAnalysisHTML('Datenschutzerklärung', complianceData['Datenschutz']['Datenschutzerklärung']);
+                    document.querySelector('.verschluesselung').innerHTML = createAnalysisHTML('Verschlüsselung', complianceData['IT-Sicherheit']['Verschlüsselung']);
+                    document.querySelector('.domain').innerHTML = createAnalysisHTML('Domain und Header', complianceData['IT-Sicherheit']['Domain und Header']);
+
+
+                    // Update suggestions
+                    const suggestionsContainer = document.querySelector('.suggestions');
+                    suggestionsContainer.innerHTML = '<h2 class="text-xl font-bold">Vorschläge</h2>' + complianceData["Vorschläge"].map(suggestion => `<div>- ${suggestion}</div>`).join('');
+
+                } catch (error) {
+                    console.error('Error fetching results:', error);
+                }
+            }
+        });
+
+
+    </script>
+
+</body>
+
+</html>
