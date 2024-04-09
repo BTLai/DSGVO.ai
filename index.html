@@ -4,13 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Überprüfen Sie die DSGVO-Konformität Ihrer Webseite mit unserer einfachen Überprüfung.">
+    <meta property="og:title" content="DSGVO Konformitätsprüfung" />
+    <meta property="og:description"
+        content="Stellen Sie sicher, dass Ihre Webseite DSGVO-konform ist. Schnell und einfach." />
+    <meta property="og:type" content="website" />
     <title>DSGVO Konformitätsprüfung</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
     <header>
-        <h1>DSGVO Konformitätsprüfung für Ihre Webseite</h1>
+        <img src="img/logo.png" alt="DSGVO Compliance Logo" id="logo">
+        <h1>DSGVO-Konformität leicht gemacht</h1>
+        <p>Analysieren Sie jede Website, um festzustellen, ob sie der Datenschutz-Grundverordnung entspricht.</p>
     </header>
     <main class="container">
         <form id="urlForm" class="form-style">
@@ -28,7 +37,7 @@
                 Scanergebnisse wird per E-Mail verschickt.</p>
             <label for="emailAddress">E-Mail Adresse:</label>
             <input type="email" id="emailAddress" name="emailAddress" required>
-            <button type="submit" class="btn">Absenden</button>
+            <button type="submit" class="btn">Analyse</button>
         </form>
 
         <div id="successMessage" class="form-style" style="display: none;">
@@ -38,11 +47,155 @@
         </div>
 
     </main>
+
+    <!-- FAQ Bereich -->
+    <section id="faq" class="container-faq">
+        <h2>DSGVO Konformität – FAQ</h2>
+        <div class="faq-item">
+            <button class="faq-question">Gilt die DSGVO für mein Unternehmen?</button>
+            <div class="faq-answer">
+                <p>Die DSGVO ist „extraterritorial”, was bedeutet, dass das Gesetz Einwohner der Europäischen Union
+                    schützt. Wenn Ihr
+                    Unternehmen Geschäfte mit Einwohnern der Mitgliedsländer macht (z. B. Produkte oder Dienstleistungen
+                    anbietet) und/oder
+                    wenn Ihre Webseite Daten von diesen Einwohnern sammelt, dann gilt die DSGVO für Sie. Dabei ist es
+                    unerheblich, ob Ihr
+                    Unternehmen seinen Sitz in der EU hat oder nicht.
+                </p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question">Unterscheidet sich die DSGVO der EU von der britischen GDPR?</button>
+            <div class="faq-answer">
+                <p>Die DSGVO der EU unterscheidet sich kaum von der britischen GDPR, da das Vereinigte Königreich eine
+                    Version
+                    der DSGVO mit nur wenigen Änderungen übernommen hat. Seit dem Austritt des Vereinigten Königreichs
+                    aus der
+                    Europäischen Union im Jahr 2020 (Brexit) unterliegt der Datenschutz im Vereinigten Königreich nicht
+                    mehr der
+                    DSGVO, da es kein Mitgliedstaat mehr ist. Die britische GDPR trat am 30. Januar 2020 in Kraft,
+                    zusammen mit
+                    einer geänderten Version des Data Protection Act 2018 und den Privacy and Electronic Communications
+                    Regulations (PECR).</p>
+                <p>Wie die DSGVO der EU umfasst auch die britische GDPR die folgenden Aspekte:</p>
+                <ul>
+                    <li>Sie gewährt den Einwohnern des Vereinigten Königreichs eine Reihe von Rechten bezüglich ihrer
+                        personenbezogenen Daten und des Datenschutzes.</li>
+                    <li>Sie erfordert die Einholung einer gültigen Einwilligung der Nutzer, z. B. für die Verwendung von
+                        Cookies
+                        und Tracking-Technologien auf Ihrer Website, bevor personenbezogene Daten gesammelt oder
+                        verarbeitet
+                        werden.</li>
+                    <li>Sie erfordert eine sichere Speicherung und Dokumentation der Einwilligung.</li>
+                    <li>Sie erfordert, dass der Nutzer seine Einwilligung genauso einfach ändern oder widerrufen kann,
+                        wie er
+                        sie erteilt hat.</li>
+                </ul>
+                <p>Beide Verordnungen verwenden ein „Opt-In”-Modell für die Einwilligung, was bedeutet, dass in den
+                    meisten
+                    Fällen die Einwilligung der Nutzer eingeholt werden muss, bevor Daten gesammelt oder verarbeitet
+                    werden
+                    können. Die Unternehmen müssen auch eine Rechtsgrundlage für die Datenverarbeitung haben, wie die
+                    Einwilligung der Nutzer oder andere Optionen wie die Erfüllung eines Vertrags.</p>
+                <p>Im Rahmen der DSGVO der EU hat jedes Mitgliedsland seine eigene Datenschutzbehörde, die für die
+                    Durchsetzung
+                    zuständig ist. Die Durchsetzungsbehörde für die britische GDPR ist der Information Commissioner, der
+                    das
+                    Information Commissioner’s Office (ICO) vertritt, also eine zentrale Behörde. Wie die DSGVO der EU
+                    gewährt
+                    auch die britische GDPR den Verbrauchern kein privates Klagerecht, d. h. die Möglichkeit, bei
+                    Datenschutzverletzungen oder anderen Verstößen zu klagen.</p>
+                <p>Die britische GDPR deckt drei Bereiche ab, die in der DSGVO der EU nicht enthalten sind:</p>
+                <ul>
+                    <li>Nationale Sicherheit</li>
+                    <li>Nachrichtendienste</li>
+                    <li>Einwanderung</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Wie kann ich meine Webseite DSGVO-konform machen?</button>
+            <div class="faq-answer">
+                <p>Wir können keine Rechtsberatung leisten und empfehlen daher, einen qualifizierten Rechtsbeistand zu
+                    konsultieren, wenn
+                    es um Ihre spezifische Geschäftssituation und die spezifische Datenerfassung Ihres Unternehmens
+                    geht. <br> <br>
+
+                    Die DSGVO bietet jedoch klare Richtlinien und Best Practices. Unternehmen müssen über eine
+                    Rechtsgrundlage für die
+                    Verarbeitung personenbezogener Daten verfügen. Die Einwilligung der Nutzer ist eine gängige
+                    Rechtsgrundlage, aber es
+                    gibt auch andere, wie die Erfüllung eines Vertrags oder ein öffentliches Interesse. Die sicherste
+                    Rechtsgrundlage für
+                    viele Arten und Zwecke der Datenverarbeitung ist die Einholung und sichere Verwaltung der
+                    Nutzereinwilligung mit einer
+                    Consent Management-Lösung. <br> <br>
+
+                    Bei der Verwendung der Einwilligung als Rechtsgrundlage müssen Unternehmen in vielen Fällen die
+                    Einwilligung der Nutzer
+                    einholen, bevor sie deren personenbezogene Daten erfassen und verarbeiten. Eine gültig Einwilligung
+                    muss freiwillig,
+                    spezifisch, informiert und eindeutig sein. Die Nutzer müssen in der Lage sein, auf granularer Ebene
+                    zu verstehen, in
+                    welche Datennutzung sie einwilligen, und Webseiten dürfen keine Tricks anwenden, um die Einwilligung
+                    zu erlangen. <br> <br>
+
+                    Unternehmen müssen immer klare Informationen bereitstellen, z. B. in einer Datenschutzerklärung auf
+                    der Webseite, die
+                    den Nutzern mitteilen, welche Daten gesammelt werden, zu welchen Zwecken und wie sie weitergegeben,
+                    verkauft oder
+                    verwendet werden können. Die Nutzer müssen auch über ihre gesetzlichen Datenschutzrechte informiert
+                    und beraten werden,
+                    wie sie diese Rechte ausüben können. <br> <br>
+
+                    Die Installation einer Consent Management Platform (CMP) wie der Cookiebot CMP ist einfach und das
+                    Setup ist
+                    benutzerfreundlich. Die Cookiebot CMP ermöglicht es Unternehmen, Informationen zum Datenschutz
+                    bereitzustellen und
+                    gültige Einwilligungen von Nutzern einzuholen und zu speichern. Zudem scannt die CMP auch Webseiten,
+                    um festzustellen,
+                    welche Cookies und Tracking-Technologien verwendet werden, und blockiert deren Verwendung, bis die
+                    Einwilligung des
+                    Nutzers eingeholt wurde, und hilft so Datenschutzkonformität zu gewährleisten. <br> <br>
+
+                    Mit Hilfe von Funktionen zur Geolokalisierung kann die CMP Nachrichten und Funktionen an den
+                    Standort des Nutzers
+                    anpassen, um beispielsweise DSGVO Konformität zu ermöglichen. Dank der automatisierten Verwaltung
+                    von Einwilligungen
+                    bleibt die CMP auch in Bezug auf die Technologie und Rechtslage auf dem neuesten Stand, um die
+                    Einhaltung der
+                    Vorschriften zu unterstützen.</p>
+            </div>
+        </div>
+        <!-- <div class="faq-contact">
+            <p>Haben Sie noch Fragen?</p>
+        </div> -->
+    </section>
     <footer>
-        <p>Durch das Absenden dieses Formulars stimme ich den Nutzungsbedingungen und der
-            Datenschutzrichtlinie von
-            DSGVO.AI™ zu .</p>
+        <div class="footer-content">
+            <div class="align-x">
+                <p>Durch das Absenden dieses Formulars stimme ich den Nutzungsbedingungen und der Datenschutzrichtlinie
+                    von
+                    DSGVO.AI™ zu. <br>Diese Produkt ist Teil von <a href="https://b-t-l.ai/"
+                        target="_blank">B-T-L.AI™</a> Produkte.</p>
+                <img src="img/company.png" alt="Company Logo" class="company-logo">
+            </div>
+            <div class="footer-bottom">
+                <p>© 2021 DSGVO.AI™. Alle Rechte vorbehalten.</p>
+                <nav>
+                    <ul>
+                        <li><a href="pages/impressum.html" rel="noopener noreferrer">Impressum</a></li>
+                        <li><a href="pages/datenschutz.html" rel="noopener noreferrer">Datenschutzerklärung</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
     </footer>
+
+
+
+
     <script src="script.js"></script>
 </body>
 

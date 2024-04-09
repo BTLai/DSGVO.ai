@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compliance Report with Graphs</title>
+    <title>DSGVO Konformitätsbericht</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -88,7 +88,7 @@
             color: #a94442;
         }
 
-        footer {
+        section {
             background-color: #f4f4f4;
             color: #333;
             text-align: center;
@@ -96,13 +96,99 @@
             border-top: 1px solid #ddd;
         }
 
-        footer a {
+        section a {
             color: #337ab7;
             text-decoration: none;
         }
 
-        footer a:hover {
+        section a:hover {
             text-decoration: underline;
+        }
+
+        footer {
+            background-color: #ffffff;
+            color: #666;
+            border-top: 1px solid #eaeaea;
+            text-align: center;
+            padding: 0.8rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        footer .align-x {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+        }
+
+        .align-x p {
+            flex: 1;
+            margin-right: 1rem;
+            /* Adjust as needed for spacing */
+        }
+
+        .company-logo {
+            max-width: 120px;
+            /* Adjust as needed for your logo size */
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 0 1rem;
+        }
+
+        .footer-bottom>p,
+        .footer-bottom nav {
+            margin: 0;
+        }
+
+        footer nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+            padding: 0;
+        }
+
+        footer nav ul li {
+            display: inline;
+        }
+
+        footer nav a {
+            color: #14933a;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer nav a:hover {
+            color: #0c7a29;
+        }
+
+        @media (max-width: 768px) {
+
+            .footer-content,
+            .align-x {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .align-x p {
+                margin: 0 0 1rem 0;
+            }
+
+            footer nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
         }
     </style>
 
@@ -110,14 +196,19 @@
 
 <body>
 
-    <div class="container flex flex-col font-sans max-w-4xl">
-        <h1 class="text-3xl text-center font-bold">DSGVO Analyse Bericht</h1>
+    <div class="container mx-auto my-10 p-5 bg-white shadow-lg rounded-lg">
+        <header class="text-center mb-10">
+            <img src="img/logo.png" alt="DSGVO Compliance Logo" id="logo" style="  display: block;
+  margin: 0 auto 16px;
+  max-width: 200px;">
+            <h1 class="text-3xl font-bold uppercase">DSGVO Analyse Bericht</h1>
+            <p class="text-sm mt-1 text-gray-600">Ihr Partner für Datenschutz und Compliance</p>
+        </header>
         <div class="flex flex-row justify-between py-[2em]">
             <div>
                 <h3 class="url">......................</h3>
                 <span class="font-light text-xs analyse-date">Analyse-Datum: .................. Uhr</span>
             </div>
-            <div class="text-3xl font-bold pr-[1em] text-green-400">DSGVO.AI</div>
         </div>
         <!-- Sections for Compliance Data -->
         <div class="flex flex-wrap justify-around">
@@ -162,7 +253,7 @@
             <div></div>
         </div>
 
-        <footer class="text-center bg-gray-100 text-gray-600 py-4 px-6 mt-8">
+        <section class="text-center bg-gray-100 text-gray-600 py-4 px-6 mt-8">
             <p>&copy; 2024 DSGVO.AI. Alle Rechte vorbehalten.</p>
             <p>Die Informationen auf dieser Website dienen der allgemeinen Information und stellen keine Rechtsberatung
                 dar.</p>
@@ -171,10 +262,32 @@
             <p>Diese Website nutzt Cookies, um Ihr Erlebnis zu verbessern. Mit der weiteren Nutzung dieser Website
                 stimmen Sie
                 der Verwendung von Cookies zu.</p>
-        </footer>
+        </section>
+
 
     </div>
-
+    <footer>
+        <div class="footer-content">
+            <div class="align-x">
+                <p>Durch das Absenden dieses Formulars stimme ich den Nutzungsbedingungen und der
+                    Datenschutzrichtlinie
+                    von
+                    DSGVO.AI™ zu. <br>Diese Produkt ist Teil von <a href="https://b-t-l.ai/"
+                        target="_blank">B-T-L.AI™</a>
+                    Produkte.</p>
+                <img src="img/company.png" alt="Company Logo" class="company-logo">
+            </div>
+            <div class="footer-bottom">
+                <p>© 2021 DSGVO.AI™. Alle Rechte vorbehalten.</p>
+                <nav>
+                    <ul>
+                        <li><a href="pages/impressum.html" rel="noopener noreferrer">Impressum</a></li>
+                        <li><a href="pages/datenschutz.html" rel="noopener noreferrer">Datenschutzerklärung</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </footer>
     <script>
         const ctx = document.getElementById('Informationspflichten').getContext('2d');
         const impressumChart = new Chart(ctx, {
@@ -290,7 +403,7 @@
 
                     // Updating the URL and the date elements with the fetched data
                     if (urlElement && data.url) {
-                        urlElement.textContent = data.url; // Setting the fetched URL
+                        urlElement.textContent = "Website: " + data.url; // Setting the fetched URL
                     }
 
                     if (dateElement && data.created_at) {
