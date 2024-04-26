@@ -21,15 +21,21 @@ header {
 }
 
 .content {
-  max-width: 744px;
+  max-width: 680px;
   margin: 20px auto;
   padding: 16px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
   width: 80%;
+  p {
+    text-align: justify;
+  }
 }
 
 .statistics {
   text-align: center;
   padding: 20px;
+  padding-bottom: 0px;
 }
 
 .statistics h3 {
@@ -41,8 +47,40 @@ header {
   height: auto;
   margin: 10px 0;
   border-radius: 1em;
-  box-shadow: #333;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-bottom: 0px;
+}
+
+.features ul {
+  list-style: none; /* Removes default list styling */
+  padding: 0;
+}
+
+.features li {
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 5px;
+  font-size: 1rem;
+}
+
+.features li:last-child {
+  border-bottom: none; /* No border for the last item */
+}
+
+.statistics {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.statistics img {
+  width: 100%; /* Ensures the image is responsive */
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.btn {
+  margin-top: 20px;
+  font-size: 1.2rem; /* Larger font size for better visibility */
 }
 
 #logo {

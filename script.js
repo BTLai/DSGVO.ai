@@ -3,6 +3,13 @@ document.getElementById("urlForm").addEventListener("submit", function (event) {
   showEmailForm();
 });
 
+document.getElementById("scrollTopBtn").addEventListener("click", function () {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   const faqQuestions = document.querySelectorAll(".faq-question");
 
