@@ -32,6 +32,23 @@ header {
   }
 }
 
+.highlight-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.advent {
+  margin-top: 40px;
+  background-color: #13702f;
+  padding: 4px;
+  border-radius: 16px;
+  cursor: pointer; /* Add this line */
+  h1 {
+    color: white;
+  }
+}
+
 .statistics {
   text-align: center;
   padding: 20px;

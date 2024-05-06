@@ -3,10 +3,12 @@ document.getElementById("urlForm").addEventListener("submit", function (event) {
   showEmailForm();
 });
 
-document.getElementById("scrollTopBtn").addEventListener("click", function () {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
+document.querySelectorAll(".scrollTopBtn").forEach((btn) => {
+  btn.addEventListener("click", function () {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   });
 });
 
