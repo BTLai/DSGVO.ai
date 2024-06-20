@@ -42,7 +42,7 @@ function showEmailForm() {
 
 function sendToGCPFunction(websiteUrl, emailAddress) {
   const gcpFunctionUrl =
-    "https://europe-west3-dsgvo-422512.cloudfunctions.net/dsgvo_analyse";
+    "https://europe-west3-dsgvo-422512.cloudfunctions.net/dsgvo_analyse-1";
   console.log("Sending to GCP Function:", websiteUrl, emailAddress);
   const data = {
     url: websiteUrl,
